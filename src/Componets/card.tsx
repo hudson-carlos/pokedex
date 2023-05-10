@@ -14,7 +14,7 @@ export default ({imgPokemon, namePokemon}: pokemon ) => (
         display: 'flex',
         justifyContent: 'center',
       }}>
-          <Card.Text><h3>{namePokemon}</h3> </Card.Text>
+          <Card.Text><p>{namePokemon}</p> </Card.Text>
         </Card.Body>
       </Card>    
   </>
