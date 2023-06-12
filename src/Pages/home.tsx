@@ -4,14 +4,13 @@ import { MyContext } from "../Context/contextProvider";
 import LoadingPokemons from "../Componets/loadingPokemons";
 import Header from "../Componets/header";
 import { getPokeAPI } from "../api";
-import { pagination } from "./myfunctions";
 
 export default () => {
   const {
     page,
     setPage,
-    listPokemons,
     setListPokemons,
+    listPokemons,
     loading,
     setLoading,
     search,
@@ -23,6 +22,7 @@ export default () => {
   useEffect (() => {
     getPokeAPI().then((results) => {
       setAllPokemons(results);
+      setListPokemons(results);
       if (loading) setLoading(false);
     })
   }, []);
@@ -38,14 +38,7 @@ export default () => {
     if (loadMoreRef.current) observer.observe(loadMoreRef.current);
     return () => observer.disconnect(); 
 
-  }, [loading]);
-
-
-  useEffect(() => {
-    const newList =  pagination(search, page, allPokemons);
-    
-    setListPokemons([...listPokemons, ...newList]);   
-  }, [search, loading, page]);
+  }, [loading, listPokemons]);
 
   if (loading) {
     return <h1>Loading</h1>
@@ -55,10 +48,11 @@ export default () => {
     <main>
       <Header />
       {
-      listPokemons.map(({url, name}, index) => {
-        return <Card  linkPokemon={ url } key={`${name}_${index}`}/>
+      listPokemons.map(({url, name}, index, arr) => {
+        if (index <= (page - 1)) return <Card  linkPokemon={ url } key={`${name}_${index}`}/>
       })}
       <LoadingPokemons loadMoreRef = {loadMoreRef} />   
+
     </main>
   )
 }

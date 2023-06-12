@@ -2,18 +2,27 @@ import { useContext } from "react"
 import { MyContext } from "../Context/contextProvider";
 
 export default () => {
-  const { search, setSearch, setListPokemons } = useContext(MyContext);
+  const { search, setSearch, setListPokemons, setPage, allPokemons } = useContext(MyContext);
 
     return (
       <header>
-        <input 
-          type="text" 
-          value={search}
-          onChange={(t) => {
-            setListPokemons([]);
-            setSearch(t.currentTarget.value)} 
-          }
-        />
+        <form>
+          <input 
+            type="text" 
+            value={search}
+            onChange={(t) => setSearch(t.currentTarget.value)} 
+          />
+          <input 
+            type="button" 
+            value="search"
+            onClick={() => {
+              setPage(20);
+              const newList = allPokemons.filter(({name}) =>  name.includes(search));
+              setListPokemons(newList); 
+            }
+          }  
+          />
+        </form>
       </header>
   )
 }

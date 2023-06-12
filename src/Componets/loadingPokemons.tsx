@@ -1,4 +1,15 @@
+import { useContext } from "react"
+import { MyContext } from "../Context/contextProvider"
+
 export default ({loadMoreRef}: any) => {
-  
-  return (<p ref={loadMoreRef}>Carregando mais pokemons...</p>)
+  const { listPokemons } = useContext(MyContext);
+
+  const messageNotFaund: string = "No pokemon found"
+  const messageLoading: string = "Loading more pokemons..." 
+
+  if (listPokemons.length === 0) return <h4>{messageNotFaund}</h4>
+
+  if (listPokemons.length < 20) return null;  
+
+  return (<h4 ref={loadMoreRef}>{messageLoading}</h4>)
 }
