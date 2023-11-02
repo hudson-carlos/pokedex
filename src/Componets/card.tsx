@@ -1,20 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import { MyContext } from '../Context/contextProvider';
 
 interface linkPokemon {
   linkPokemon: string;
+  widthCard: string;
 }
 
-export default ({linkPokemon}: linkPokemon) => {
+export default ({linkPokemon, widthCard}: linkPokemon) => {
   const [sprite, setSprite] = useState<string>("");
   const [pokemon, setPokemon] = useState<any>({});
   const [gif, setGif] = useState<string>("");
 
-  const { setPokemonDetails } = useContext(MyContext);
+
 
   useEffect (() => {
     fetch(linkPokemon).then((pokemon) => pokemon.json()).then((pokemon) => {
@@ -27,7 +27,7 @@ export default ({linkPokemon}: linkPokemon) => {
  
   return (
     <Card 
-      style={{ width: '18rem'}}
+      style={{ width: `${widthCard}`}}
       onClick={() => localStorage.setItem('pokeDetails',  JSON.stringify(pokemon))}
     >
       <Link to={`/details/${pokemon.name}`}>

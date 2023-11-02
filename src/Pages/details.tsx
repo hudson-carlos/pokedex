@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default () => {
   const localPokemon = JSON.parse(localStorage.getItem('pokeDetails') || "");
+  
   return(
     
     <>
@@ -13,8 +14,8 @@ export default () => {
       <Card style={{ width: '30rem'}}>
           <Card.Img variant="top" src={localPokemon["sprites"]["other"]["official-artwork"]["front_default"]} />
       </Card> 
-      {/* <DataPokemon />
-      <Evolution /> */}
+      <DataPokemon  pokemonDetails = {localPokemon}/>
+      <Evolution pokemonDetails={localPokemon}/>
     </>
   );
 }

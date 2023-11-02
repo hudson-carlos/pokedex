@@ -49,7 +49,10 @@ export default () => {
       <Header />
       {
       listPokemons.map(({url, name}, index) => {
-        if (index <= (page - 1)) return <Card  linkPokemon={ url } key={`${name}_${index}`}/>
+        if (index <= (page - 1)) return <Card  
+          linkPokemon={ url }
+          widthCard='15rem'
+          key={`${name}_${index}`}/>
       })}
       <LoadingPokemons loadMoreRef = {loadMoreRef} />   
 

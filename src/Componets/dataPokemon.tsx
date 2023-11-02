@@ -1,8 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { MyContext } from "../Context/contextProvider";
-
-export default () => {
-  const { pokemonDetails } = useContext(MyContext);
+export default ({pokemonDetails}: any) => {
   const abilities = pokemonDetails.abilities;
   const types = pokemonDetails.types;
 
@@ -15,10 +11,10 @@ export default () => {
       <p>{pokemonDetails.height / 10} M</p>
 
       <h5>abilities</h5>
-      {abilities.map(({ability}: any) => <p>{ability.name}</p>)}
+      {abilities.map(({ability}: any) => <p key={ability.name} >{ability.name}</p>)}
 
       <h5>types</h5>
-      {types.map(({type}: any) => <p>{type.name}</p>)}
+      {types.map(({type}: any) => <p key={type.name}>{type.name}</p>)}
     </>
   ); 
 }
