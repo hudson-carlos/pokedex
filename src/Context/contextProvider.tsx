@@ -12,15 +12,18 @@ const defaultValue = {
   setSearch: () => {},
   allPokemons: [], 
   setAllPokemons: () => {},
+  pokemonDetails: {},
+  setPokemonDetails: () => {},
 }
 
 
 export const MyContext = createContext<typeDefaultValue>(defaultValue);
 
 export const ContextProvider: FC<contextProps> = ({ children }) => {
+  const [allPokemons, setAllPokemons] = useState<ListPokemons[] | []>(defaultValue.allPokemons);
   const [listPokemons, setListPokemons] = useState<ListPokemons[] | []>(defaultValue.listPokemons);
+  const [pokemonDetails, setPokemonDetails] = useState<any>(defaultValue.pokemonDetails);
   const [page, setPage] = useState<number>(defaultValue.page);
-  const [allPokemons, setAllPokemons] = useState<ListPokemons[] | []>(defaultValue.listPokemons);
   const [loading, setLoading] = useState<boolean>(defaultValue.loading);
   const [search, setSearch] = useState<string>(defaultValue.search);
   
@@ -35,7 +38,9 @@ export const ContextProvider: FC<contextProps> = ({ children }) => {
       search,
       setSearch,
       allPokemons,
-      setAllPokemons
+      setAllPokemons,
+      pokemonDetails,
+      setPokemonDetails
     }}>
       {children}
     </MyContext.Provider>

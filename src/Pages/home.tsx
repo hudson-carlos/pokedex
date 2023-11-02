@@ -13,9 +13,7 @@ export default () => {
     listPokemons,
     loading,
     setLoading,
-    search,
     setAllPokemons,
-    allPokemons,
   } = useContext(MyContext)
   const loadMoreRef = useRef(null);
 
@@ -27,6 +25,8 @@ export default () => {
     })
   }, []);
 
+
+  // listagem por escrool
   useEffect(() => {
     const observer = new IntersectionObserver((entities) => {
       const target = entities[0];
@@ -48,7 +48,7 @@ export default () => {
     <main>
       <Header />
       {
-      listPokemons.map(({url, name}, index, arr) => {
+      listPokemons.map(({url, name}, index) => {
         if (index <= (page - 1)) return <Card  linkPokemon={ url } key={`${name}_${index}`}/>
       })}
       <LoadingPokemons loadMoreRef = {loadMoreRef} />   

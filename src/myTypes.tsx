@@ -20,4 +20,6 @@ export type typeDefaultValue = {
   setSearch: Dispatch<SetStateAction<string>>;
   allPokemons: ListPokemons[]; 
   setAllPokemons: Dispatch<SetStateAction<ListPokemons[]>>;
+  pokemonDetails: any;
+  setPokemonDetails: Dispatch<SetStateAction<any>>;
 }
