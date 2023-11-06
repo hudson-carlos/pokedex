@@ -1,0 +1,11 @@
+.list {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 15rem;
+    position: absolute;
+    z-index: -1;
+}

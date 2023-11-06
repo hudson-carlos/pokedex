@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import DataPokemon from "../Componets/dataPokemon";
-import Evolution from "../Componets/evolution";
+import DataPokemon from "../Components/dataPokemon";
+import Evolution from "../Components/evolution";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default () => {
   const localPokemon = JSON.parse(localStorage.getItem('pokeDetails') || "");
   
-  return(
-    
+  return(    
     <>
       <h1>{localPokemon.name}</h1>
       <Card style={{ width: '30rem'}}>

@@ -1,9 +1,11 @@
 import { useEffect, useRef, useContext } from "react";
-import Card from "../Componets/card";
+import Card from "../Components/card";
+import ListGroup from 'react-bootstrap/ListGroup';
 import { MyContext } from "../Context/contextProvider";
-import LoadingPokemons from "../Componets/loadingPokemons";
-import Header from "../Componets/header";
+import LoadingPokemons from "../Components/loadingPokemons";
+import Header from "../Components/header";
 import { getPokeAPI } from "../api";
+import ListPokemons from "../Components/listPokemons";
 
 export default () => {
   const {
@@ -43,19 +45,13 @@ export default () => {
   if (loading) {
     return <h1>Loading</h1>
   } 
+  // listagem por escrool
 
   return (
     <main>
       <Header />
-      {
-      listPokemons.map(({url, name}, index) => {
-        if (index <= (page - 1)) return <Card  
-          linkPokemon={ url }
-          widthCard='15rem'
-          key={`${name}_${index}`}/>
-      })}
+      <ListPokemons listPokemons = {listPokemons} page = {page} />
       <LoadingPokemons loadMoreRef = {loadMoreRef} />   
-
     </main>
   )
 }

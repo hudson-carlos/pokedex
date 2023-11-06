@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from "react"
-import { MyContext } from "../Context/contextProvider";
-import Card from "../Componets/card";
+import { useEffect, useState } from "react"
+import Card from "./card";
 
 export default ({pokemonDetails}: any) => {
   const [evolution, setEvolution] = useState<any>({})
-  // const {pokemonDetails} = useContext(MyContext);
   const {species} = pokemonDetails;
 
   useEffect(() => {
@@ -22,12 +20,14 @@ export default ({pokemonDetails}: any) => {
         nextEvolution(next[0]?.evolves_to, list);
       }     
       
-      if (list[0]) return list.map((name, index) =>  
-      <Card  
-          linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
-          widthCard='10rem'
-          key={`${index}`}
-        />
+      if (list[0]) return list.map((name, index) =>
+      <div onClick={() => window.location.reload()}>
+        <Card  
+            linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
+            widthCard='10rem'
+            key={`${index}`}
+          />
+      </div>  
       );      
     }
     
