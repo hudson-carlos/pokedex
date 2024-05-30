@@ -26,22 +26,24 @@ export default ({linkPokemon, widthCard}: linkPokemon) => {
   }, []);
  
   return (
-    <div>
-      <Link to={`/details/${pokemon.name}`}>
-        <Card
-          className={styles.card}
-          border="info" 
-          style={{ width: `${widthCard}`}}
-          onClick={() =>{
-            localStorage.setItem('pokeDetails',  JSON.stringify(pokemon))
-          }}
-        >
-          <Card.Img variant="top" src={sprite} />
-        </Card>    
-      </Link>
-      <div className={styles.name}>
-        <h5>{pokemon.name}</h5>
-        <img src={gif} />
+    <div className={styles.cardAll}>
+      <div>
+        <Link to={`/details/${pokemon.name}`}>
+          <Card
+            className={styles.card}
+            border="info" 
+            style={{ width: `${widthCard}`}}
+            onClick={() =>{
+              localStorage.setItem('pokeDetails',  JSON.stringify(pokemon))
+            }}
+          >
+            <Card.Img variant="top" src={sprite} />
+          </Card>    
+        </Link>
+        <div className={styles.name}>
+          <h5>{pokemon.name}</h5>
+          {/* <img src={gif} /> */}
+        </div>
       </div>
     </div>
  );

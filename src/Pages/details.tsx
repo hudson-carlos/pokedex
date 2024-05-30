@@ -1,26 +1,23 @@
-import { useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import DataPokemon from "../Components/dataPokemon";
 import Evolution from "../Components/evolution";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from "../Components_css/Details.module.css";
+import PokemonCarousels from '../Components/PokemonCarousels';
 
 export default () => {
-  const localPokemon = JSON.parse(localStorage.getItem('pokeDetails') || "");
+  const locaStoragelPokemon = JSON.parse(localStorage.getItem('pokeDetails') || "");
   
   return(    
-    <>
-      <h1>{localPokemon.name}</h1>
-      <Card style={{ width: '30rem'}}>
-          <Card.Img variant="top" src={localPokemon["sprites"]["other"]["official-artwork"]["front_default"]} />
-      </Card> 
-      <DataPokemon  pokemonDetails = {localPokemon}/>
-      <Evolution pokemonDetails={localPokemon}/>
-    </>
+    <div className={styled.details}>
+      <div>
+        {/* <Card style={{ width: '25rem'}}>
+            <Card.Img variant="top" src={locaStoragelPokemon["sprites"]["other"]["official-artwork"]["front_default"]} />
+        </Card>  */}
+        <PokemonCarousels pokemon = {locaStoragelPokemon}/>
+        <DataPokemon  pokemonDetails = {locaStoragelPokemon}/>
+        <Evolution pokemonDetails={locaStoragelPokemon}/>
+      </div>
+    </div>
   );
 }
-
-  // if (pokemonDetails) return (
-    
-  // ); 
-  // else return <h1>Loading</h1>;
-

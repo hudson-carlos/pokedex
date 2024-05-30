@@ -1,0 +1,5 @@
+.evolution_cards:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

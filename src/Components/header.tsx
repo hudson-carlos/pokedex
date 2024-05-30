@@ -3,7 +3,6 @@ import { MyContext } from "../Context/contextProvider";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import style from '../Components_css/Header.module.css';
-import { Col } from "react-bootstrap";
 
 export default () => {
   const { search, setSearch, setListPokemons, setPage, allPokemons } = useContext(MyContext);
@@ -13,7 +12,7 @@ export default () => {
     const newList = allPokemons.filter(({name}) =>  name.includes(search.toLowerCase()));
     setListPokemons(newList);
   }
-  
+    
   return (
     <header className={style.header}>
       <h2>Pokédex</h2>

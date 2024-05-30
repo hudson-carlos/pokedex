@@ -1,4 +1,3 @@
-import { ListGroup } from "react-bootstrap"
 import Card from "./card"
 import style from "../Components_css/ListPokemons.module.css";
 

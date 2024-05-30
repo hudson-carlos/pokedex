@@ -1,6 +1,4 @@
 import { useEffect, useRef, useContext } from "react";
-import Card from "../Components/card";
-import ListGroup from 'react-bootstrap/ListGroup';
 import { MyContext } from "../Context/contextProvider";
 import LoadingPokemons from "../Components/loadingPokemons";
 import Header from "../Components/header";
@@ -45,13 +43,13 @@ export default () => {
   if (loading) {
     return <h1>Loading</h1>
   } 
-  // listagem por escrool
+  //
 
   return (
     <main>
       <Header />
-      <ListPokemons listPokemons = {listPokemons} page = {page} />
-      <LoadingPokemons loadMoreRef = {loadMoreRef} />   
+      <ListPokemons listPokemons = {listPokemons} page = {page} />   
+      <LoadingPokemons loadMoreRef = {loadMoreRef} />
     </main>
   )
 }

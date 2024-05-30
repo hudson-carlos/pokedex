@@ -6,6 +6,4 @@
     flex-wrap: wrap;
     flex-direction: row;
     margin-top: 15rem;
-    position: absolute;
-    z-index: -1;
 }
