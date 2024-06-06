@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Card from "./card";
 import style from "../Components_css/Evolution.module.css";
+import { MyContext } from "../Context/contextProvider";
 
-export default ({pokemonDetails}: any) => {
+export default () => {
+  const { pokemonDetails } = useContext(MyContext);
   const [listEvolutions, setListEvolutions] = useState<any>([]);
   const {species} = pokemonDetails;
 
@@ -29,21 +31,36 @@ export default ({pokemonDetails}: any) => {
   }
   
   function evolutions() {
-    if (listEvolutions[0]) return <div className={style.evolution_cards}>
+    if (listEvolutions.length === 1) return <h3>Esse pokemon não tem Evolução</h3>
+
+    return <div className={style.evolution}>
       {
-        listEvolutions.map((name:string, index:number) =>
-          <Card  
-            linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
-            widthCard='10rem'
-            key={`${index}`}
-          />  
-        )               
+        listEvolutions.map((name:string, index:number) => {
+          if (index === listEvolutions.length - 1) {          
+            return (
+              <Card  
+                linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
+                widthCard='10rem'
+                key={`${index}`}
+              />
+          )} 
+          return (
+           <>
+            <Card  
+              linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
+              widthCard='10rem'
+              key={`${index}`}
+            />
+            <i className="bi bi-arrow-right-circle" style={{ fontSize: "3rem", color: "rgb(195, 235, 235)" }}></i>   
+            </>
+          )
+        })               
       }
     </div>
   }
     
   return (
-    <div>
+    <div className={style.evolutionDiv}>
       <h3>Evolution</h3>
       {evolutions()}
     </div>

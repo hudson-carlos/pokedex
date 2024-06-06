@@ -1,6 +1,17 @@
 .data {
-    border: solid 1px red;
-    margin: 1rem;
+    padding: 1rem;
+    margin-left: 1px;
+    background-color: #30a7d7;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data h6 {
+    color: white;
 }

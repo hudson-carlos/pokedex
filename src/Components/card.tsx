@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../Components_css/Card.module.css";
+import { Button, Figure, Image } from 'react-bootstrap';
+import { MyContext } from '../Context/contextProvider';
 
 interface linkPokemon {
   linkPokemon: string;
@@ -13,7 +15,7 @@ export default ({linkPokemon, widthCard}: linkPokemon) => {
   const [sprite, setSprite] = useState<string>("");
   const [pokemon, setPokemon] = useState<any>({});
   const [gif, setGif] = useState<string>("");
-
+  const { setPokemonDetails } = useContext(MyContext);
 
 
   useEffect (() => {
@@ -29,20 +31,24 @@ export default ({linkPokemon, widthCard}: linkPokemon) => {
     <div className={styles.cardAll}>
       <div>
         <Link to={`/details/${pokemon.name}`}>
-          <Card
-            className={styles.card}
-            border="info" 
-            style={{ width: `${widthCard}`}}
+          <Button 
+            variant="outline-danger"
             onClick={() =>{
               localStorage.setItem('pokeDetails',  JSON.stringify(pokemon))
+              setPokemonDetails(pokemon)
             }}
           >
-            <Card.Img variant="top" src={sprite} />
-          </Card>    
+            <Figure>
+              <Figure.Image
+                style={{ width: `${widthCard}`}}
+                src={sprite}
+              />
+            </Figure>
+          </Button>
         </Link>
         <div className={styles.name}>
           <h5>{pokemon.name}</h5>
-          {/* <img src={gif} /> */}
+          <img src={gif} />
         </div>
       </div>
     </div>

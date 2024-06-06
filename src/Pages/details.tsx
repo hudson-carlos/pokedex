@@ -1,23 +1,36 @@
-import Card from 'react-bootstrap/Card';
 import DataPokemon from "../Components/dataPokemon";
 import Evolution from "../Components/evolution";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "../Components_css/Details.module.css";
-import PokemonCarousels from '../Components/PokemonCarousels';
+import PokemonCarousels from '../Components/pokemonCarousels'; 
+import NavPage from '../Components/navPage';
+import { useContext, useEffect, useState } from 'react';
+import { MyContext } from "../Context/contextProvider";
 
 export default () => {
-  const locaStoragelPokemon = JSON.parse(localStorage.getItem('pokeDetails') || "");
-  
+  const { setPokemonDetails, pokemonDetails } = useContext(MyContext);
+
+  useEffect(() => {
+    locaStoragelPokemon();
+  },[]);
+
+  function locaStoragelPokemon() {
+    let data = localStorage.getItem('pokeDetails');
+    data = data ? JSON.parse(data) : null;
+    setPokemonDetails(data);
+  } 
+
+  if (!pokemonDetails.name) return null;
+
   return(    
     <div className={styled.details}>
-      <div>
-        {/* <Card style={{ width: '25rem'}}>
-            <Card.Img variant="top" src={locaStoragelPokemon["sprites"]["other"]["official-artwork"]["front_default"]} />
-        </Card>  */}
-        <PokemonCarousels pokemon = {locaStoragelPokemon}/>
-        <DataPokemon  pokemonDetails = {locaStoragelPokemon}/>
-        <Evolution pokemonDetails={locaStoragelPokemon}/>
+      <div className={styled.detailsDiv}>
+        <PokemonCarousels />
+        <div className={styled.detailsDiv2}>
+          <NavPage />
+          <DataPokemon />
+        </div>
       </div>
+      <Evolution />
     </div>
   );
 }

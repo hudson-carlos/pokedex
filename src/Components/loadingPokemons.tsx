@@ -10,9 +10,6 @@ export default ({loadMoreRef}: any) => {
   if (listPokemons.length === 0) return <h4>{messageNotFaund}</h4>
 
   if (listPokemons.length < 20) return null;
-  
-  console.log(listPokemons);
-  
 
   return (<h4 ref={loadMoreRef}>{messageLoading}</h4>)
 }

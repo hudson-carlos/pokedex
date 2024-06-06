@@ -1,45 +1,41 @@
+import { useContext, useRef, useState } from 'react';
 import styled from '../Components_css/DataPokemon.module.css';
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
+import { MyContext } from '../Context/contextProvider';
 
-export default ({pokemonDetails}: any) => {
+export default () => {
+  const { pokemonDetails } = useContext(MyContext);
+
   const abilities = pokemonDetails.abilities;
   const types = pokemonDetails.types;
+  const { latest } = pokemonDetails.cries
+  const audioRef = useRef<HTMLAudioElement>(null);
+  
+  function PlaySound (){
+    if (audioRef.current) return audioRef.current.play();
+  }
+
 
   return (
-    <div>
-    <Tabs
-      defaultActiveKey="profile"
-      id="uncontrolled-tab-example"
-      className="mb-3"
-    >
-      <Tab eventKey="weight" title="Weight">
-        {pokemonDetails.weight / 10} KG
-      </Tab>
-      <Tab eventKey="height" title="Height">
-        {pokemonDetails.height / 10} M
-      </Tab>
-      <Tab eventKey="abilities" title="Abilities">
-        {abilities.map(({ability}: any) => <p key={ability.name} >{ability.name}</p>)}
-      </Tab>
-      <Tab eventKey="type" title="Type">
-        {types.map(({type}: any) => <p key={type.name}>{type.name}</p>)}
-      </Tab>
-    </Tabs>  
-
-      {/* <h1>{pokemonDetails.name}</h1>
-      
-      <h5>weight</h5>
-      <p>{pokemonDetails.weight / 10} KG</p>
-
-      <h5>height</h5>
-      <p>{pokemonDetails.height / 10} M</p>
-
-      <h5>abilities</h5>
-      {abilities.map(({ability}: any) => <p key={ability.name} >{ability.name}</p>)}
-
-      <h5>types</h5>
-      {types.map(({type}: any) => <p key={type.name}>{type.name}</p>)} */}
+    <div className={styled.data}>
+      <i onClick={PlaySound} className="bi bi-volume-up" style={{ fontSize: "2rem", }}>
+        <audio ref={audioRef} src={latest} />
+      </i>
+      <div>
+        <h5>Weight</h5>
+        <h6>{pokemonDetails.weight / 10} KG</h6>
+      </div>
+      <div>
+        <h5>Height</h5>
+        <h6>{pokemonDetails.height / 10} M KG</h6>
+      </div>
+      <div>
+        <h5>Abilities</h5>
+        {abilities.map(({ability}: any) => <h6 key={ability.name} >{ability.name}</h6>)}
+      </div>
+      <div>
+        <h5>Types</h5>
+        {types.map(({type}: any) => <h6 key={type.name}>{type.name}</h6>)}
+      </div>
     </div>
   ); 
 }

@@ -4,26 +4,16 @@ import LoadingPokemons from "../Components/loadingPokemons";
 import Header from "../Components/header";
 import { getPokeAPI } from "../api";
 import ListPokemons from "../Components/listPokemons";
+import styled from "../Components_css/Homer.module.css";
 
 export default () => {
   const {
     page,
     setPage,
-    setListPokemons,
     listPokemons,
-    loading,
-    setLoading,
-    setAllPokemons,
+    allPokemons
   } = useContext(MyContext)
   const loadMoreRef = useRef(null);
-
-  useEffect (() => {
-    getPokeAPI().then((results) => {
-      setAllPokemons(results);
-      setListPokemons(results);
-      if (loading) setLoading(false);
-    })
-  }, []);
 
 
   // listagem por escrool
@@ -38,17 +28,17 @@ export default () => {
     if (loadMoreRef.current) observer.observe(loadMoreRef.current);
     return () => observer.disconnect(); 
 
-  }, [loading, listPokemons]);
+  }, [listPokemons]);
 
-  if (loading) {
-    return <h1>Loading</h1>
+  if (!allPokemons[0]) {
+    return <h1>Loading Pokemons</h1>
   } 
   //
 
   return (
-    <main>
+    <main className={styled.home}>
       <Header />
-      <ListPokemons listPokemons = {listPokemons} page = {page} />   
+      <ListPokemons />
       <LoadingPokemons loadMoreRef = {loadMoreRef} />
     </main>
   )

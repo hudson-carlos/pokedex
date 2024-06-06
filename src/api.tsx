@@ -1,4 +1,5 @@
 import { ListPokemons } from "./myTypes";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
 export async function getPokeAPI(): Promise<ListPokemons[]> {
