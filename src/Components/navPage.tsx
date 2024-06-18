@@ -4,38 +4,15 @@ import { Link } from 'react-router-dom';
 import styled from '../Components_css/NavPage.module.css';
 export default () => {
   return (
-    <Nav className={styled.nav}>
-      <Nav.Item>
-        <Link to={"/"}>
-          <Button variant="outline-danger">
-            <Figure>
-              <Figure.Image
-                  width={50}
-                  src={icon}
-              />
-              <Figure.Caption>
-                  <h6>pokedex</h6>
-              </Figure.Caption>
-            </Figure>
-          </Button>
-        </Link>
-      </Nav.Item>
-
-      <Nav.Item>
-        <Link to={"/"}>
-          <Button variant="outline-danger">
-            <Figure>
-              <Figure.Image
-                width={50}
-                src={icon}
-              />
-              <Figure.Caption>
-                <h6>pokedex</h6>
-              </Figure.Caption>
-            </Figure>
-          </Button>
-        </Link>   
-      </Nav.Item>
-    </Nav>        
+    <nav>
+      <Link to={"/"}>
+        <Button variant="outline-danger" className={styled.nav}>
+          <Figure>
+            <Figure.Image width={50} src={icon} />
+          </Figure>
+          <h4>pokedex</h4>
+        </Button>
+      </Link>
+    </nav>        
   );
 }

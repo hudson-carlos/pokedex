@@ -24,11 +24,11 @@ export default () => {
   return(    
     <div className={styled.details}>
       <div className={styled.detailsDiv}>
-        <PokemonCarousels />
         <div className={styled.detailsDiv2}>
           <NavPage />
           <DataPokemon />
         </div>
+        <PokemonCarousels />
       </div>
       <Evolution />
     </div>

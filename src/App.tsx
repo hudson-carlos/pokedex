@@ -16,8 +16,6 @@ export default () => {
 
   useEffect (() => {
     getPokeAPI().then((results) => {
-      console.log("foi");
-      
       setAllPokemons(results);
       setListPokemons(results);
       if (loading) setLoading(false);

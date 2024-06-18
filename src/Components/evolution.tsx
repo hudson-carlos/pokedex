@@ -41,7 +41,7 @@ export default () => {
               <Card  
                 linkPokemon={`https://pokeapi.co/api/v2/pokemon/${name}/`}
                 widthCard='10rem'
-                key={`${index}`}
+                key={index}
               />
           )} 
           return (

@@ -1,8 +1,9 @@
 .nav {
+    margin: 10px;
     width: 200px;
-    height: 140px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration-color: black;
 }
-
