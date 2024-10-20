@@ -14,5 +14,5 @@ Este projeto é uma Pokedex interativa que permite aos usuários explorar e pesq
 - CSS
 
 ##  Link para o deploy:
-<a>https://vercel.live/link/pokedex-one-blush.vercel.app/</a>
+<a>https://pokedex-one-blush.vercel.app/</a>
 
