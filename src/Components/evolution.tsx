@@ -51,7 +51,8 @@ export default () => {
               widthCard='10rem'
               key={`${index}`}
             />
-            <i className="bi bi-arrow-right-circle" style={{ fontSize: "3rem", color: "rgb(195, 235, 235)" }}></i>   
+            <i className={`bi bi-arrow-right-circle ${style.mobileOff}`} style={{ fontSize: "3rem", color: "rgb(195, 235, 235)" }}></i>
+            <i className={`bi bi-arrow-down-circle ${style.mobileOn}`} style={{ fontSize: "3rem", color: "rgb(195, 235, 235)" }}></i>   
             </>
           )
         })               
@@ -61,7 +62,7 @@ export default () => {
     
   return (
     <div className={style.evolutionDiv}>
-      <h3>Evolution</h3>
+      <h1>Evolutions</h1>
       {evolutions()}
     </div>
   );

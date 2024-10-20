@@ -1,5 +1,4 @@
 .details {
-    padding: 1rem;
     background-color: #e6bc2f;
     width: 100%;
     display: flex;
@@ -7,20 +6,22 @@
     align-items: center;
 }
 
+
 .detailsDiv {
-    border: solid 1px black;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .detailsDiv2 {
-    width: 500px;
+    width: 30%;
     display: flex;
-    align-items: end;
+    align-items: center;
     flex-direction: column;
 }
+
 
 .sprints {
     width: 100%;
@@ -29,7 +30,7 @@
 
 .carousels {
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,10 +39,34 @@
 }
 
 .carouselsDiv {
-    width: 600px;
-    height: 500px;
+    width: 90%;
+    max-width: 500px;
+    height: 40%;
     margin-right: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.mobileOn {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+    .detailsDiv {
+        flex-direction: column;
+    }
+
+    .detailsDiv2 {
+        width: 90%;
+    }
+
+    .mobileOff {
+        display: none;
+    }
+
+    .mobileOn {
+        display: block;
+    }
 }

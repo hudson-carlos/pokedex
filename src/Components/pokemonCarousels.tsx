@@ -22,7 +22,6 @@ export default () => {
   
   return (
     <div className={styled.carouselsDiv}>
-      <h1>{pokemonDetails.name}</h1 >
       <Carousel className={styled.carousels}>
         {sprites.map((sprite: any) => (
             <Carousel.Item key={sprite}>

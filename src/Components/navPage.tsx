@@ -10,7 +10,6 @@ export default () => {
           <Figure>
             <Figure.Image width={50} src={icon} />
           </Figure>
-          <h4>pokedex</h4>
         </Button>
       </Link>
     </nav>        
