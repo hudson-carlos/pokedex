@@ -12,3 +12,7 @@ Este projeto é uma Pokedex interativa que permite aos usuários explorar e pesq
 - React
 - TypeScript
 - CSS
+
+##  Link para o deploy:
+<a>https://vercel.live/link/pokedex-one-blush.vercel.app/</a>
+
