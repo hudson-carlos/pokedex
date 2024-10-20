@@ -21,6 +21,7 @@
 .mobileOff {
     font-size: 3rem;
     color: rgb(195, 235, 235);
+    margin-bottom: 1rem;
 }
 
 .mobileOn {
@@ -32,14 +33,14 @@
         flex-direction: column;
     }
 
-    .mobileOn {
+    /* .mobileOn {
         display: block;
         font-size: 3rem;
         color: rgb(195, 235, 235);
-        margin-bottom: 1rem;
-    }
+    } */
 
     .mobileOff {
-        display: none;
+        display: block;
+        transform: rotate(90deg);
     }
 }
